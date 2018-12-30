@@ -1,24 +1,28 @@
-package com.example.demo.topic;
+package com.example.demo.course;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.example.demo.topic.Topic;
+
 @Entity
-public class Topic {
+public class Course {
 	
 	@Id
 	private String id;
 	private String name;
 	private String description;
+	private Topic topic;
 	
-	public Topic() {}
+	public Course() {}
 	
-	public Topic(String id, String name, String description) {
+	public Course(String id, String name, String description, String topicId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.topic = new Topic(topicId, "", "");
 	}
 	
 	public String getId() {
@@ -38,6 +42,14 @@ public class Topic {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Topic getTopic() {
+		return topic;
+	}
+
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 
 }
